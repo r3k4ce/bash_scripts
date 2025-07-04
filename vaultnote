@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Destination: Obsidian Vault path in Windows
+VAULT_PATH="/mnt/c/Users/anune/OneDrive/Documents/KnowHub"
+
+# Check if a file was provided
+if [ -z "$1" ]; then
+  echo "❌ Usage: ./vaultcp.sh <file-to-copy.md>"
+  exit 1
+fi
+
+# Check if the source file exists
+if [ ! -f "$1" ]; then
+  echo "❌ File '$1' not found."
+  exit 1
+fi
+
+# Perform the copy
+cp -v "$1" "$VAULT_PATH"
+
+# Success message
+echo "✅ Copied '$1' to Obsidian vault: $VAULT_PATH"
